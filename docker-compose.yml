@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./memory-bank:/app/memory-bank
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    command: >
+      bash -c "
+        markdownlint /app/memory-bank/*.md &&
+        bash
+      "
+
+volumes:
+  memory-bank:
