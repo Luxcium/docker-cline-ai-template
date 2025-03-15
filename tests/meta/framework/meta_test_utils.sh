@@ -254,6 +254,65 @@ assert_dependency_strategy() {
     esac
 }
 
+# Generate a template with the given parameters
+generate_template() {
+    local template_name="$1"
+    local params="$2"
+    local output_dir="$3"
+    
+    # Ensure output directory exists
+    mkdir -p "$output_dir"
+    
+    # Find the template directory
+    local template_dir="${TEST_DIR}/../../templates/${template_name}"
+    if [ ! -d "$template_dir" ]; then
+        echo "Template not found: $template_name"
+        return 1
+    fi
+    
+    # Copy template files to output directory
+    cp -r "${template_dir}/." "$output_dir/"
+    
+    # Parse parameters
+    local project_name
+    local description
+    local author
+    
+    # Extract parameters from JSON
+    if command -v jq &> /dev/null; then
+        # Use jq if available
+        project_name=$(echo "$params" | jq -r '.projectName // ""')
+        description=$(echo "$params" | jq -r '.description // ""')
+        author=$(echo "$params" | jq -r '.author // ""')
+    else
+        # Fallback to grep/sed
+        project_name=$(echo "$params" | grep -o '"projectName": *"[^"]*"' | sed 's/"projectName": *"\([^"]*\)"/\1/')
+        description=$(echo "$params" | grep -o '"description": *"[^"]*"' | sed 's/"description": *"\([^"]*\)"/\1/')
+        author=$(echo "$params" | grep -o '"author": *"[^"]*"' | sed 's/"author": *"\([^"]*\)"/\1/')
+    fi
+    
+    # Set environment variables for template processing
+    export PROJECT_NAME="$project_name"
+    export PROJECT_DESCRIPTION="$description"
+    export AUTHOR_NAME="$author"
+    
+    # Run initialization script if it exists
+    if [ -f "${output_dir}/bootstrap.sh" ]; then
+        chmod +x "${output_dir}/bootstrap.sh"
+        (cd "$output_dir" && ./bootstrap.sh)
+    elif [ -f "${output_dir}/setup.sh" ]; then
+        chmod +x "${output_dir}/setup.sh"
+        (cd "$output_dir" && ./setup.sh)
+    fi
+    
+    # Unset environment variables
+    unset PROJECT_NAME
+    unset PROJECT_DESCRIPTION
+    unset AUTHOR_NAME
+    
+    return 0
+}
+
 # Assert a template can be generated reproducibly
 assert_template_reproducible() {
     local template="$1"
@@ -265,8 +324,8 @@ assert_template_reproducible() {
     local temp_dir2
     temp_dir2=$(mktemp -d)
     
-    if ! eval "generate_template \"$template\" \"$params\" \"$temp_dir1\"" || \
-       ! eval "generate_template \"$template\" \"$params\" \"$temp_dir2\""; then
+    if ! generate_template "$template" "$params" "$temp_dir1" || \
+       ! generate_template "$template" "$params" "$temp_dir2"; then
         echo "Failed to generate template"
         rm -rf "$temp_dir1" "$temp_dir2"
         return 1
