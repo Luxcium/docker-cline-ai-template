@@ -4,14 +4,23 @@
 
 ## Features
 
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
+* Memory Bank System for comprehensive project documentation
+* Workspace validation and diagnostic tools
+* VSCode integration with standardized settings
+* Documentation standards enforcement
+{{#if dockerSupport}}
+* Docker containerization support
+{{/if}}
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* [List prerequisites here]
+
+* Git 2.0+
+* VSCode with recommended extensions
+{{#if dockerSupport}}
+* Docker Engine 20.10+
+{{/if}}
 
 ## Installation
 
@@ -28,9 +37,43 @@ cd {{projectName}}
 {{installCommand}}
 ```
 
+## Memory Bank Structure
+
+This project uses a memory bank system to maintain comprehensive project documentation:
+
+```text
+memory-bank/
+├── projectbrief.md    # Core requirements and goals
+├── productContext.md  # Project purpose and user experience goals
+├── systemPatterns.md  # Architecture and design patterns
+├── techContext.md    # Technical stack and dependencies
+├── activeContext.md  # Current work focus and decisions
+└── progress.md       # Development status and known issues
+```
+
+### Memory Bank Usage
+
+1. Review files in the memory bank to understand project context
+2. Update documentation as the project evolves
+3. Use the memory bank for onboarding new team members
+4. Maintain technical decisions and architectural patterns
+
 ## Development
 
-To start development:
+### Setting Up Development Environment
+
+1. Clone the repository:
+
+```bash
+git clone {{repositoryUrl}}
+cd {{projectName}}
+```
+
+2. Review VSCode settings in `.vscode/settings.json`
+
+3. Install recommended extensions when prompted by VSCode
+
+4. Start development:
 
 ```bash
 {{devCommand}}
@@ -50,11 +93,34 @@ docker run -p {{port}}:{{port}} {{projectName}}
 ```
 {{/if}}
 
+## Workspace Validation
+
+This project includes built-in workspace validation:
+
+* Automatic format on save
+* Markdown linting with customized rules
+* Documentation standard enforcement
+* Memory bank structure validation
+
+### Running Validation
+
+1. VSCode will automatically validate files on save
+2. Check the Problems panel for any warnings or errors
+3. Follow suggested fixes to maintain project standards
+
 ## Testing
+
+Run the test suite to validate your changes:
 
 ```bash
 {{testCommand}}
 ```
+
+The test suite includes:
+* Unit tests for core functionality
+* Integration tests for component interaction
+* End-to-end workflow tests
+* Workspace validation tests
 
 ## Contributing
 
@@ -75,6 +141,6 @@ This project is licensed under the {{license}} License - see the [LICENSE](LICEN
 
 ## Acknowledgments
 
-- [Acknowledgment 1]
-- [Acknowledgment 2]
-- [Acknowledgment 3]
+* [Acknowledgment 1]
+* [Acknowledgment 2]
+* [Acknowledgment 3]

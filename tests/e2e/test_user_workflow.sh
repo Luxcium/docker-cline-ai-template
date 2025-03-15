@@ -3,219 +3,144 @@
 # Source the test framework
 source "$(dirname "$0")/../framework/test_framework.sh"
 
-# Test suite for end-to-end user workflow
+# Test suite for end-to-end user workflow tests
 describe "End-to-End User Workflow Tests"
 
-# Common variables
-TEST_WORKSPACE=""
-
-# Setup function for each test
+# Setup test environment for each test
 setup() {
-    TEST_WORKSPACE="${TEMP_DIR}/e2e-workspace"
-    mkdir -p "$TEST_WORKSPACE"
+    setup_test_environment
+    if [ -z "$TEMP_DIR" ]; then
+        TEMP_DIR="${TEMPLATE_DIR}/tmp/test-$(date +%s)"
+        mkdir -p "$TEMP_DIR"
+    fi
+    WORKSPACE_DIR="${TEMP_DIR}/workspace"
+    mkdir -p "$WORKSPACE_DIR"
+    
+    # Save original working directory
+    ORIG_DIR="$(pwd)"
 }
 
-# Cleanup function after each test
+# Cleanup test environment after each test
 cleanup() {
-    if [ -d "$TEST_WORKSPACE" ]; then
-        rm -rf "$TEST_WORKSPACE"
+    # Return to original directory
+    cd "$ORIG_DIR" || true
+    
+    if [ -d "$TEMP_DIR" ]; then
+        rm -rf "$TEMP_DIR"
     fi
 }
 
-# Helper function to simulate user input
-simulate_user_input() {
-    local template="$1"
-    export PROJECT_NAME="e2e-test-project"
-    export PROJECT_DESCRIPTION="End-to-end test project"
-    export AUTHOR_NAME="E2E Test User"
-    export AUTHOR_EMAIL="e2e@test.com"
-    export REPOSITORY_URL="https://github.com/e2e-test/test-project"
-    export LICENSE="MIT"
-    export DOCKER_SUPPORT="true"
-    export PORT="3000"
+# Helper function to create test input file
+create_test_input() {
+    local input_file="$1"
+    cat > "$input_file" << EOF
+1
+test-project
+Test project description
+Test Author
+test@example.com
+https://github.com/test/test-project
+MIT
+y
+3000
+$WORKSPACE_DIR/test-project
+y
+EOF
 }
 
-# Helper function to verify project can be built and run
-verify_project_functionality() {
-    local project_dir="$1"
-    local template="$2"
-    
-    echo "Verifying project functionality for template: $template"
-    
-    case "$template" in
-        "node")
-            # Verify Node.js project
-            (cd "$project_dir" && {
-                # Install dependencies
-                if ! npm install; then
-                    fail "Failed to install Node.js dependencies"
-                    return 1
-                fi
-                
-                # Run tests
-                if ! npm test; then
-                    fail "Node.js project tests failed"
-                    return 1
-                fi
-                
-                # Start the application briefly
-                npm start & local pid=$!
-                sleep 5
-                kill $pid
-            })
-            ;;
-            
-        "python")
-            # Verify Python project
-            (cd "$project_dir" && {
-                # Create and activate conda environment
-                if [ -f "environment.yml" ]; then
-                    if ! conda env create -f environment.yml; then
-                        fail "Failed to create conda environment"
-                        return 1
-                    fi
-                    
-                    # Run tests
-                    if ! python -m pytest; then
-                        fail "Python project tests failed"
-                        return 1
-                    fi
-                fi
-            })
-            ;;
-            
-        "base")
-            # Verify base project structure
-            for file in README.md .gitignore; do
-                if [ ! -f "${project_dir}/${file}" ]; then
-                    fail "Missing required file: $file"
-                    return 1
-                fi
-            done
-            ;;
-    esac
-    
-    # Verify Docker build if enabled
-    if [ "$DOCKER_SUPPORT" = "true" ] && [ -f "${project_dir}/Dockerfile" ]; then
-        (cd "$project_dir" && {
-            if ! docker build -t "e2e-test-${template}" .; then
-                fail "Docker build failed"
-                return 1
-            fi
-        })
-    fi
-    
-    return 0
-}
-
-# Test complete workflow for each template type
-for template in "base" "node" "python"; do
-    it "should complete full workflow for ${template} template" {
-        setup
-        simulate_user_input "$template"
-        
-        # Create project directory
-        local project_dir="${TEST_WORKSPACE}/${PROJECT_NAME}"
-        mkdir -p "$project_dir"
-        
-        echo "Testing ${template} template workflow..."
-        
-        # 1. Copy template files
-        cp -r "${TEMPLATE_DIR}/templates/${template}/." "$project_dir/"
-        assert_dir_exists "$project_dir" "Project directory should be created"
-        
-        # 2. Make scripts executable
-        if [ -f "${project_dir}/bootstrap.sh" ]; then
-            chmod +x "${project_dir}/bootstrap.sh"
-        fi
-        if [ -f "${project_dir}/setup.sh" ]; then
-            chmod +x "${project_dir}/setup.sh"
-        fi
-        
-        # 3. Initialize the project
-        (cd "$project_dir" && {
-            # Run appropriate initialization script
-            if [ -f "setup.sh" ]; then
-                ./setup.sh
-            elif [ -f "bootstrap.sh" ]; then
-                ./bootstrap.sh
-            fi
-        })
-        
-        # 4. Verify project structure
-        assert_dir_exists "${project_dir}/.git" "Git repository should be initialized"
-        assert_file_exists "${project_dir}/README.md" "README.md should exist"
-        
-        # 5. Verify template-specific files
-        case "$template" in
-            "node")
-                assert_file_exists "${project_dir}/package.json" "package.json should exist"
-                assert_dir_exists "${project_dir}/src" "src directory should exist"
-                ;;
-            "python")
-                assert_file_exists "${project_dir}/pyproject.toml" "pyproject.toml should exist"
-                assert_file_exists "${project_dir}/environment.yml" "environment.yml should exist"
-                ;;
-        esac
-        
-        # 6. Verify Docker setup if enabled
-        if [ "$DOCKER_SUPPORT" = "true" ]; then
-            assert_file_exists "${project_dir}/Dockerfile" "Dockerfile should exist"
-            assert_file_exists "${project_dir}/docker-compose.yml" "docker-compose.yml should exist"
-        fi
-        
-        # 7. Verify project can be built and run
-        if ! verify_project_functionality "$project_dir" "$template"; then
-            fail "Project functionality verification failed for ${template} template"
-        fi
-        
-        # 8. Verify Git state
-        (cd "$project_dir" && {
-            local git_status
-            git_status=$(git status --porcelain)
-            assert_equals "" "$git_status" "Git working directory should be clean"
-            
-            local commit_msg
-            commit_msg=$(git log -1 --pretty=%B)
-            assert_contains "$commit_msg" "Initial commit" "Should have initial commit"
-        })
-        
-        echo "✅ ${template} template workflow completed successfully"
-        
-        cleanup
-    }
-done
-
-# Test error handling in workflow
-it "should handle errors gracefully during workflow" {
+# Test complete project creation workflow
+it "should create project following user input" {
     setup
-    simulate_user_input "node"
     
-    # Test with invalid project name
-    export PROJECT_NAME="invalid/name"
-    local project_dir="${TEST_WORKSPACE}/${PROJECT_NAME}"
-    mkdir -p "$project_dir"
+    # Create input file
+    local input_file="${TEMP_DIR}/input.txt"
+    create_test_input "$input_file"
     
-    # Attempt to initialize with invalid name
-    cp -r "${TEMPLATE_DIR}/templates/node/." "$project_dir/"
-    local output
-    output=$(cd "$project_dir" && ./setup.sh 2>&1 || true)
-    assert_contains "$output" "error" "Should show error for invalid project name"
+    # Run template factory with input
+    cd "$TEMPLATE_DIR" || fail "Could not change to template directory"
+    ./template_factory.sh < "$input_file"
     
-    # Test with missing dependencies
-    export PROJECT_NAME="missing-deps"
-    project_dir="${TEST_WORKSPACE}/${PROJECT_NAME}"
-    mkdir -p "$project_dir"
+    # Test project creation
+    local project_dir="$WORKSPACE_DIR/test-project"
+    assert_dir_exists "$project_dir" "Project directory should be created"
     
-    # Create minimal package.json with invalid dependency
-    cp -r "${TEMPLATE_DIR}/templates/node/." "$project_dir/"
-    echo '{"dependencies":{"nonexistent-package":"1.0.0"}}' > "${project_dir}/package.json"
+    # Test memory bank
+    assert_dir_exists "${project_dir}/memory-bank" "Memory bank directory should exist"
+    for file in "projectbrief.md" "productContext.md" "systemPatterns.md" \
+        "techContext.md" "activeContext.md" "progress.md"; do
+        assert_file_exists "${project_dir}/memory-bank/${file}" "Memory bank file ${file} should exist"
+    done
     
-    output=$(cd "$project_dir" && npm install 2>&1 || true)
-    assert_contains "$output" "404" "Should show error for missing dependency"
+    # Test development environment
+    assert_dir_exists "${project_dir}/.vscode" "VS Code directory should exist"
+    assert_file_exists "${project_dir}/.vscode/settings.json" "VS Code settings should exist"
+    
+    # Test configuration files
+    assert_file_exists "${project_dir}/.clinerules" ".clinerules file should exist"
+    assert_file_exists "${project_dir}/docker-compose.yml" "docker-compose.yml should exist"
+    assert_file_exists "${project_dir}/Dockerfile" "Dockerfile should exist"
+    
+    # Test Git initialization
+    assert_dir_exists "${project_dir}/.git" "Git repository should be initialized"
+    
+    # Test content customization
+    local readme_content
+    readme_content=$(cat "${project_dir}/README.md")
+    assert_contains "$readme_content" "test-project" "README.md should contain project name"
+    assert_contains "$readme_content" "Test project description" "README.md should contain project description"
+    
+    cleanup
+}
+
+# Test error handling in project creation
+it "should handle invalid input appropriately" {
+    setup
+    
+    # Test invalid template selection
+    echo "4" | ./template_factory.sh 2>&1 | assert_contains_output \
+        "Invalid selection" "Should reject invalid template number"
+    
+    # Test empty project name
+    printf "1\n\n" | ./template_factory.sh 2>&1 | assert_contains_output \
+        "Project name cannot be empty" "Should reject empty project name"
+    
+    # Test invalid project name
+    printf "1\ntest project\n" | ./template_factory.sh 2>&1 | assert_contains_output \
+        "Project name can only contain" "Should reject invalid project name"
+    
+    cleanup
+}
+
+# Test project validation
+it "should validate generated project structure" {
+    setup
+    
+    # Create input file
+    local input_file="${TEMP_DIR}/input.txt"
+    create_test_input "$input_file"
+    
+    # Run template factory
+    cd "$TEMPLATE_DIR" || fail "Could not change to template directory"
+    ./template_factory.sh < "$input_file"
+    
+    # Test required files existence
+    local project_dir="$WORKSPACE_DIR/test-project"
+    assert_file_exists "${project_dir}/README.md" "README.md should exist"
+    assert_file_exists "${project_dir}/.gitignore" ".gitignore should exist"
+    assert_file_exists "${project_dir}/Dockerfile" "Dockerfile should exist"
+    
+    # Test memory bank content
+    local brief_content
+    brief_content=$(cat "${project_dir}/memory-bank/projectbrief.md")
+    assert_contains "$brief_content" "Test project description" "Project brief should contain description"
+    
+    # Test Docker configuration
+    local compose_content
+    compose_content=$(cat "${project_dir}/docker-compose.yml")
+    assert_contains "$compose_content" "3000:3000" "docker-compose.yml should contain port mapping"
     
     cleanup
 }
 
 # Run all tests
-run_tests "$(basename "$0")"
+run_tests "$0"

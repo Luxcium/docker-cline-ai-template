@@ -128,7 +128,7 @@ function skip_test() {
 function setup_test_environment() {
     # Set up directories
     TEST_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    TEMPLATE_DIR="$(cd "${TEST_DIR}/../.." && pwd)"
+    TEMPLATE_DIR="${PWD}"
 mkdir -p "${TEMPLATE_DIR}/tmp"
     
     # Create a temporary directory within the project directory to avoid permission issues
