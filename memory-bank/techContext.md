@@ -10,12 +10,14 @@
 * Node.js runtime (for Node.js templates)
 * Python & Conda (for Python templates)
 
-### Development Tools
+### Required Development Tools
 
 * Shell script testing utilities
 * Docker testing capabilities
 * Git integration tools
 * Code quality checkers
+* Markdown linting tools
+* Workspace diagnostic validators
 
 ## Technical Stack
 
@@ -32,6 +34,8 @@
 * Assertion library
 * Environment isolation
 * Result reporting
+* Workspace diagnostic validation
+* Markdown linting enforcement
 
 ## Configuration Standards
 
@@ -116,7 +120,7 @@
 * Clear assertions
 * Proper cleanup
 
-### Documentation Requirements
+### Testing Documentation Guidelines
 
 * Test descriptions
 * Usage examples
@@ -186,6 +190,20 @@
 * Setup requirements
 * Expected results
 * Error handling
+
+### Markdown Standards
+
+* Unique headings across all levels (MD024)
+* Contextual naming for duplicates
+* Semantic meaning preservation
+* Consistent formatting rules
+
+### Workspace Validation
+
+* Pre-tool diagnostic checks
+* Post-tool validation verification
+* Zero-warnings policy
+* Continuous monitoring
 
 ## Performance Considerations
 

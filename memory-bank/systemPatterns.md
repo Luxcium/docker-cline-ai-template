@@ -146,6 +146,8 @@ template-system/
 * Usage examples
 * Error solutions
 * Best practices
+* Markdown linting compliance
+* Unique heading structure
 
 ## Development Flow
 
@@ -155,7 +157,8 @@ template-system/
 2. Implement feature
 3. Pass test
 4. Refactor
-5. Repeat
+5. Validate workspace diagnostics
+6. Repeat
 
 ### Integration Workflow
 
@@ -170,6 +173,22 @@ template-system/
 2. Integration checks
 3. System testing
 4. Production verification
+
+## Validation Patterns
+
+### Workspace Diagnostic Workflow
+
+* Pre-tool validation check
+* Post-tool validation verification
+* Zero-warnings policy
+* Contextual heading uniqueness
+
+### Markdown Linting Standards
+
+* Unique headings across all levels (MD024)
+* Contextual naming for duplicate concepts
+* Semantic meaning preservation
+* Consistent formatting rules
 
 ## System Integration
 

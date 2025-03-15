@@ -1,0 +1,294 @@
+# Cline AI Rules & Learning Configuration
+
+## 🧠 Learning & Knowledge Retention
+
+### Learning Directives
+
+* LEARN_MODE: "continuous"
+* MEMORY_PERSISTENCE: "enabled"
+* CONTEXT_LAYERING: "enabled"
+* PATTERN_RECOGNITION: "active"
+* WORKSPACE_MONITORING: "active"
+
+### Knowledge Retention Patterns
+
+```json
+{
+  "memory_bank": {
+    "auto_update": true,
+    "versioning": true,
+    "sync_interval": "on_change"
+  },
+  "learning_patterns": {
+    "user_workflows": true,
+    "error_patterns": true,
+    "best_practices": true,
+    "decision_history": true
+  }
+}
+```
+
+### State Management
+
+```json
+{
+  "state_tracking": {
+    "project_decisions": true,
+    "architectural_patterns": true,
+    "user_preferences": true,
+    "error_resolutions": true,
+    "workspace_validation": {
+      "enabled": true,
+      "auto_fix": true,
+      "real_time": true,
+      "validate_before_tools": true,
+      "validate_after_tools": true
+    }
+  },
+  "context_awareness": {
+    "project_type": "dynamic",
+    "framework_detection": true,
+    "dependency_analysis": true
+  }
+}
+```
+
+## 📝 Markdown Configuration
+
+### Core Rules
+
+```json
+{
+  "markdown": {
+    "enforce_standards": true,
+    "allow_flexibility": true,
+    "rules_version": "1.0.0",
+    "base_config": {
+      "MD013": false,
+      "line_length_validation": "disabled"
+    }
+  }
+}
+```
+
+### Standard Markdown Rules
+
+```json
+{
+  "heading_rules": {
+    "MD001": true,     // heading-increment
+    "MD003": "atx",    // heading-style
+    "MD022": true,     // blanks-around-headings
+    "MD023": true,     // heading-start-left
+    "MD024": true,     // no-duplicate-heading (requires unique headings across ALL levels)
+    "MD025": true      // single-title/single-h1
+  },
+  "list_rules": {
+    "MD004": "asterisk", // ul-style
+    "MD005": true,       // list-indent
+    "MD007": 2,          // ul-indent
+    "MD030": true,       // list-marker-space
+    "MD032": true        // blanks-around-lists
+  },
+  "code_rules": {
+    "MD031": true,     // blanks-around-fences
+    "MD038": true,     // no-space-in-code
+    "MD040": true,     // fenced-code-language
+    "MD046": "fenced", // code-block-style
+    "MD048": "backtick" // code-fence-style
+  }
+}
+```
+
+### Workspace Validation Rules
+
+```json
+{
+  "validation_workflow": {
+    "check_before_tools": true,
+    "check_after_tools": true,
+    "verify_before_completion": true,
+    "continuous_monitoring": true,
+    "critical_workflow": "mandatory"
+  },
+  "diagnostic_handling": {
+    "address_all_warnings": true,
+    "fix_before_completion": true,
+    "document_resolutions": true,
+    "prevent_recurrence": true,
+    "zero_warnings_policy": true
+  },
+  "heading_uniqueness": {
+    "enforce_across_levels": true,
+    "contextual_naming": true,
+    "semantic_preservation": true,
+    "hierarchical_awareness": true,
+    "md024_compliance": "strict"
+  }
+}
+```
+
+### Markdown Linting Lessons
+
+```json
+{
+  "md024_handling": {
+    "description": "No duplicate headings across all levels",
+    "importance": "critical",
+    "resolution_strategy": "contextual_uniqueness",
+    "preserve_semantics": true
+  },
+  "diagnostic_workflow": {
+    "pre_tool_validation": "mandatory",
+    "post_tool_validation": "mandatory",
+    "completion_requirements": "zero_warnings"
+  }
+}
+```
+
+## 🔄 Self-Improvement & Auto-Update
+
+### Pattern Detection
+
+```json
+{
+  "pattern_tracking": {
+    "user_behaviors": {
+      "track": true,
+      "adapt": true,
+      "feedback_loop": true
+    },
+    "error_patterns": {
+      "collect": true,
+      "analyze": true,
+      "prevent": true
+    },
+    "optimization_opportunities": {
+      "identify": true,
+      "suggest": true,
+      "implement": "with_approval"
+    }
+  }
+}
+```
+
+### Version Control
+
+```json
+{
+  "version_tracking": {
+    "enabled": true,
+    "history_retention": true,
+    "rollback_support": true
+  },
+  "updates": {
+    "auto_detect": true,
+    "propose_changes": true,
+    "require_approval": true
+  }
+}
+```
+
+## 🔗 Memory Bank Integration
+
+### Sync Configuration
+
+```json
+{
+  "memory_sync": {
+    "auto_sync": true,
+    "sync_on_change": true,
+    "conflict_resolution": "manual"
+  },
+  "persistence": {
+    "state_preservation": true,
+    "context_retention": true,
+    "decision_history": true
+  }
+}
+```
+
+### Learning Events
+
+```json
+{
+  "capture_events": {
+    "user_decisions": true,
+    "error_resolutions": true,
+    "pattern_discoveries": true,
+    "optimization_insights": true
+  }
+}
+```
+
+## 📊 Performance Metrics
+
+### Learning Effectiveness
+
+```json
+{
+  "metrics": {
+    "pattern_recognition_rate": true,
+    "error_prevention_rate": true,
+    "optimization_success_rate": true,
+    "knowledge_retention_score": true
+  }
+}
+```
+
+### Quality Assurance
+
+```json
+{
+  "quality_checks": {
+    "markdown_compliance": true,
+    "code_quality": true,
+    "documentation_completeness": true,
+    "best_practices_adherence": true
+  }
+}
+```
+
+## 🔒 Version Information
+
+* Version: 1.1.0
+* Last Updated: 2025-03-15
+* Auto-Update: Enabled
+* Learning Mode: Active
+* Sync Status: Enabled
+
+## 📝 Notes
+
+1. This configuration is self-updating based on:
+
+   * User workflow patterns
+   * Error detection and resolution
+   * Best practices evolution
+   * Project-specific requirements
+
+2. Knowledge retention features:
+
+   * Persistent across sessions
+   * Context-aware adaptations
+   * Pattern-based learning
+   * Auto-documentation updates
+
+3. Markdown compliance:
+
+   * Strict structural rules
+   * Flexible line lengths
+   * Consistent formatting
+   * Context-aware adaptations
+   * Unique headings across all levels (MD024 compliance)
+   * Workspace diagnostics validation before and after changes
+   * Complete resolution of all warnings before task completion
+   * Contextually unique headings that preserve semantic meaning
+
+4. Validation workflow:
+
+   * Always check workspace diagnostics before using tools (mandatory)
+   * Always verify workspace diagnostics after using tools (mandatory)
+   * Never mark a task complete without confirming all diagnostics are resolved
+   * Document all linting rules learned for future reference
+   * Fix duplicate headings by making them contextually unique
+   * Maintain semantic meaning when renaming headings for uniqueness

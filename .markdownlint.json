@@ -9,7 +9,7 @@
   "MD010": true,
   "MD011": true,
   "MD012": true,
-  "MD013": { "line_length": 80 },
+  "MD013": false,
   "MD014": true,
   "MD018": true,
   "MD019": true,
@@ -47,8 +47,8 @@
   "MD051": true,
   "MD052": true,
   "MD053": true,
-  "MD054": { "style": "standard" },
-  "MD055": { "style": "consistent" },
+  "MD054": true,
+  "MD055": true,
   "MD056": true,
   "MD058": true
 }

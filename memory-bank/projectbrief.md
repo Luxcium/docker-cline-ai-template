@@ -10,6 +10,8 @@ This project serves as a foundational base for Docker-enabled development projec
 * Docker Configuration
 * Markdown Standards Enforcement
 * Project Documentation Structure
+* Workspace Diagnostic Validation
+* Contextual Heading Uniqueness
 
 ## Documentation Standards
 
@@ -19,6 +21,8 @@ This project serves as a foundational base for Docker-enabled development projec
   * Increment by one level only
   * Start at beginning of line
   * Surrounded by blank lines
+  * Unique across all levels (MD024)
+  * Contextually unique when needed
 
 * List Formatting
   * Consistent indentation
@@ -65,3 +69,8 @@ This project enforces strict adherence to:
 2. Memory bank maintenance
 3. Docker best practices
 4. Systematic updates
+5. Workspace diagnostic validation
+   * Pre-tool validation checks
+   * Post-tool validation verification
+   * Zero-warnings policy
+   * Contextual heading uniqueness

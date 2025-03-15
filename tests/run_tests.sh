@@ -58,6 +58,14 @@ for test_file in "$TEST_DIR"/e2e/test_*.sh; do
     fi
 done
 
+# Run meta-level tests
+echo -e "${BLUE}Running meta-level tests...${NC}"
+for test_file in "$TEST_DIR"/meta/test_*.sh; do
+    if [ -f "$test_file" ] && [ -x "$test_file" ]; then
+        run_test_file "$test_file"
+    fi
+done
+
 # Print summary
 echo -e "\n${BLUE}Test Summary:${NC}"
 echo -e "Total test suites:  $total_tests"

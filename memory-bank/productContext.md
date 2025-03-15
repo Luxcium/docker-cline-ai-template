@@ -2,7 +2,7 @@
 
 ## System Purpose
 
-The system provides a foundational structure for Docker-based development projects with:
+The system provides a foundational structure for Docker-based development with:
 
 * Enforced documentation standards
 * Systematic memory management
@@ -22,7 +22,7 @@ This system addresses several common development challenges:
 
 ## Implementation Goals
 
-### Testing Framework
+### Testing Framework Implementation
 
 * Ensure template reliability
 * Validate project generation
@@ -37,6 +37,8 @@ This system addresses several common development challenges:
 * Enable efficient updates
 * Support clear communication
 * Document testing procedures
+* Enforce markdown linting standards
+* Validate workspace diagnostics
 
 ### Development Environment
 
@@ -48,7 +50,7 @@ This system addresses several common development challenges:
 
 ## User Experience Goals
 
-### Test Framework Users
+### Framework User Interface
 
 * Clear test organization
 * Simple test creation
@@ -56,7 +58,7 @@ This system addresses several common development challenges:
 * Comprehensive reporting
 * Easy debugging
 
-### Documentation Users
+### Content Management Interface
 
 * Clear navigation structure
 * Consistent formatting
@@ -64,7 +66,7 @@ This system addresses several common development challenges:
 * Testing documentation
 * Reliable information access
 
-### Developers
+### Developer Experience
 
 * Streamlined onboarding
 * Clear standards
@@ -81,8 +83,10 @@ This system addresses several common development challenges:
 * Testing procedures documented
 * Test results reported clearly
 * Standards automatically enforced
+* Unique headings across all levels (MD024)
+* Workspace diagnostic validation workflow
 
-### Testing Framework
+### Testing Framework Standards
 
 * Comprehensive test coverage
 * Reliable test execution
@@ -90,7 +94,7 @@ This system addresses several common development challenges:
 * Efficient debugging
 * Cross-platform support
 
-### Development Environment
+### Development Environment Standards
 
 * Container isolation works
 * Tests run consistently
@@ -123,10 +127,12 @@ This system addresses several common development challenges:
 * Complete coverage
 * Regular updates
 * Practical examples
+* Contextually unique headings
+* Zero-warnings policy
 
-## Development Standards
+## Project Standards
 
-### Testing Standards
+### Testing Guidelines
 
 * Test-driven development
 * Comprehensive coverage
@@ -134,13 +140,15 @@ This system addresses several common development challenges:
 * Regular execution
 * Result validation
 
-### Documentation Standards
+### Project Documentation Requirements
 
 * Markdown compliance
 * Clear structure
 * Complete information
 * Regular updates
 * Version control
+* Pre/post-tool diagnostic validation
+* Contextual heading uniqueness
 
 ### Code Standards
 
