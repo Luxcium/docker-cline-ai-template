@@ -51,8 +51,7 @@ create_test_project() {
 }
 
 # Test base template initialization
-it "should initialize base template correctly" {
-    setup
+test_base_template() {
     local project_dir
     project_dir=$(create_test_project "base")
     
@@ -75,8 +74,18 @@ it "should initialize base template correctly" {
     local has_commits
     has_commits=$(cd "$project_dir" && git log --oneline 2>/dev/null || echo "")
     assert_contains "$has_commits" "Initial commit" "Should have initial commit"
-    
-    cleanup
+    echo "$project_dir"
+}
+
+# Test base template initialization
+it "should initialize base template correctly" {
+    local _test_init() {
+        setup
+        local project_dir
+        project_dir=$(test_base_template)
+        cleanup
+    }
+    _test_init
 }
 
 # Run all tests

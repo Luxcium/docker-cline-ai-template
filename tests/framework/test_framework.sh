@@ -107,6 +107,26 @@ function assert_contains() {
     fi
 }
 
+function assert_contains_output() {
+    local needle="$1"
+    local message="$2"
+    local output
+    output=$(cat)
+    
+    if [[ "$output" == *"$needle"* ]]; then
+        echo -e "${GREEN}✓ PASS: ${message}${NC}"
+        ((TESTS_PASSED++))
+        return 0
+    else
+        echo -e "${RED}✗ FAIL: ${message}${NC}"
+        echo -e "${YELLOW}  Expected to find: '${needle}'${NC}"
+        echo -e "${YELLOW}  In output:${NC}"
+        echo -e "${YELLOW}$(echo "$output" | sed 's/^/    /')${NC}"
+        ((TESTS_FAILED++))
+        return 1
+    fi
+}
+
 # Test lifecycle functions
 function describe() {
     CURRENT_SUITE="$1"

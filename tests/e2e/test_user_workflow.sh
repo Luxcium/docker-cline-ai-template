@@ -48,11 +48,8 @@ y
 EOF
 }
 
-# Test complete project creation workflow
-it "should create project following user input" {
-    setup
-    
-    # Create input file
+# Test project creation workflow function
+test_project_creation() {
     local input_file="${TEMP_DIR}/input.txt"
     create_test_input "$input_file"
     
@@ -62,6 +59,14 @@ it "should create project following user input" {
     
     # Test project creation
     local project_dir="$WORKSPACE_DIR/test-project"
+    
+    test_project_files "$project_dir"
+    return 0
+}
+
+# Test project files function
+test_project_files() {
+    local project_dir="$1"
     assert_dir_exists "$project_dir" "Project directory should be created"
     
     # Test memory bank
@@ -92,10 +97,8 @@ it "should create project following user input" {
     cleanup
 }
 
-# Test error handling in project creation
-it "should handle invalid input appropriately" {
-    setup
-    
+# Test error handling function
+test_error_handling() {
     # Test invalid template selection
     echo "4" | ./template_factory.sh 2>&1 | assert_contains_output \
         "Invalid selection" "Should reject invalid template number"
@@ -107,15 +110,10 @@ it "should handle invalid input appropriately" {
     # Test invalid project name
     printf "1\ntest project\n" | ./template_factory.sh 2>&1 | assert_contains_output \
         "Project name can only contain" "Should reject invalid project name"
-    
-    cleanup
 }
 
-# Test project validation
-it "should validate generated project structure" {
-    setup
-    
-    # Create input file
+# Test validation function
+test_project_validation() {
     local input_file="${TEMP_DIR}/input.txt"
     create_test_input "$input_file"
     
@@ -138,7 +136,19 @@ it "should validate generated project structure" {
     local compose_content
     compose_content=$(cat "${project_dir}/docker-compose.yml")
     assert_contains "$compose_content" "3000:3000" "docker-compose.yml should contain port mapping"
-    
+}
+
+# Test error handling in project creation
+it "should handle invalid input appropriately" {
+    setup
+    test_error_handling
+    cleanup
+}
+
+# Test project validation
+it "should validate generated project structure" {
+    setup
+    test_project_validation
     cleanup
 }
 
