@@ -14,66 +14,97 @@ memory-bank/
 └── progress.md
 ```
 
-## Documentation Patterns
+### Template Organization
 
-### Markdown Standards
+```text
+python-template/
+├── src/                    # Source code
+│   ├── __init__.py
+│   └── main.py            # FastAPI application
+├── tests/                  # Unit tests
+│   ├── __init__.py
+│   └── test_main.py
+├── Dockerfile             # Container configuration
+├── environment.yml        # Conda dependencies
+├── .pre-commit-config.yaml # Code quality hooks
+├── README.md             # Documentation
+└── .gitignore           # Version control rules
+```
 
-* Headers use ATX style (#)
-* Lists use asterisks (*)
-* Code blocks use triple backticks with language
-* Horizontal rules use hyphens (---)
+## Template Patterns
+
+### Container-First Architecture
+
+* All execution in containers
+* Conda environment management
+* No local dependencies
+* Consistent environments
+
+### Application Structure
+
+* FastAPI for APIs
+* CRUD operations
+* Type annotations
+* Automated testing
+
+### Development Patterns
+
+* Code quality automation
+* Container-based testing
+* Documentation standards
+* Dependency isolation
 
 ### File Structure
 
-* Single H1 header per file
-* Logical heading progression
-* Consistent section ordering
-* Clear hierarchy
+* Source in src/
+* Tests in tests/
+* Configuration at root
+* Clear documentation
 
-## Memory Management
+## Template Management
 
 ### Update Patterns
 
-* Sequential file updates
-* Atomic changes
-* Consistent formatting
-* Version tracking
+* Container rebuilds
+* Dependency updates
+* Version control
+* Documentation sync
 
 ### State Management
 
-* Current state in activeContext
-* Progress tracking
-* System evolution
-* Decision records
+* Container state
+* Environment isolation
+* Configuration tracking
+* Version control
 
-## Docker Integration
+## Container Integration
 
-### Container Structure
+### Structure
 
-* Isolated environments
-* Reproducible builds
-* Portable configuration
-* Service coordination
+* Base Conda image
+* Environment setup
+* Application layer
+* Entry points
 
 ### Development Flow
 
-* Local development
-* Testing environment
-* Production readiness
-* Deployment patterns
+* Local containers
+* Automated testing
+* Code quality checks
+* Documentation
 
-## Validation System
+## Quality Assurance
 
-### Documentation Checks
+### Code Quality
 
-* Markdown compliance
-* Structure verification
-* Link validation
-* Format consistency
+* Black formatting
+* Isort imports
+* Flake8 linting
+* Pre-commit hooks
 
-### Environment Validation
+### Testing Strategy
 
-* Container health
-* Service availability
-* Resource management
-* System integrity
+* Pytest framework
+* API testing
+* Container validation
+* Documentation verification

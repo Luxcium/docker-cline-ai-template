@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "{{port}}:{{port}}"
+    environment:
+      - NODE_ENV=development
+      - PORT={{port}}
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:{{port}}/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    {{#if dockerSupport}}
+    networks:
+      - app-network
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER={{projectName}}
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB={{projectName}}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+    {{/if}}
+
+volumes:
+  {{#if dockerSupport}}
+  postgres_data:
+  redis_data:
+  {{/if}}
+
+networks:
+  {{#if dockerSupport}}
+  app-network:
+    driver: bridge
+  {{/if}}

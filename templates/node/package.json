@@ -1,0 +1,48 @@
+{
+  "name": "{{projectName}}",
+  "version": "1.0.0",
+  "description": "{{projectDescription}}",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write \"src/**/*.js\"",
+    {{#if dockerSupport}}
+    "docker:build": "docker build -t {{projectName}} .",
+    "docker:run": "docker run -p {{port}}:{{port}} {{projectName}}",
+    {{/if}}
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "{{authorName}} <{{authorEmail}}>",
+  "license": "{{license}}",
+  "dependencies": {
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "helmet": "latest",
+    "morgan": "latest",
+    "winston": "latest"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-jest": "latest",
+    "eslint-plugin-prettier": "latest",
+    "husky": "latest",
+    "jest": "latest",
+    "lint-staged": "latest",
+    "nodemon": "latest",
+    "prettier": "latest",
+    "supertest": "latest"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

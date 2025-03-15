@@ -1,0 +1,15 @@
+name: python-template
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - fastapi
+  - uvicorn
+  - pytest
+  - black
+  - isort
+  - flake8
+  - httpx
+  - pip
+  - pre-commit
+  - python-dotenv
