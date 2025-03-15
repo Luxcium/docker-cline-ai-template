@@ -126,9 +126,13 @@ function skip_test() {
 
 # Test environment setup/teardown
 function setup_test_environment() {
+    # Set up directories
     TEST_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     TEMPLATE_DIR="$(cd "${TEST_DIR}/../.." && pwd)"
-    TEMP_DIR=$(mktemp -d)
+    
+    # Create a temporary directory within the project directory to avoid permission issues
+    TEMP_DIR="${TEMPLATE_DIR}/tmp/test-$(date +%s)"
+    mkdir -p "$TEMP_DIR"
     
     echo -e "${BLUE}Setting up test environment${NC}"
     echo "  Test directory: ${TEST_DIR}"
