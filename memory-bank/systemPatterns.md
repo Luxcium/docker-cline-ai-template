@@ -2,109 +2,194 @@
 
 ## Directory Structure
 
-### Memory Bank Organization
+### Testing Framework Organization
 
 ```text
-memory-bank/
-├── projectbrief.md
-├── productContext.md
-├── systemPatterns.md
-├── techContext.md
-├── activeContext.md
-└── progress.md
+tests/
+├── framework/           # Core testing utilities
+│   └── test_framework.sh # Base test infrastructure
+├── unit/               # Component-level tests
+│   └── test_base_bootstrap.sh
+├── integration/        # Cross-component tests
+│   └── test_template_initialization.sh
+├── e2e/               # Complete workflow tests
+│   └── test_user_workflow.sh
+└── README.md          # Framework documentation
 ```
-
-### Template Organization
-
-```text
-python-template/
-├── src/                    # Source code
-│   ├── __init__.py
-│   └── main.py            # FastAPI application
-├── tests/                  # Unit tests
-│   ├── __init__.py
-│   └── test_main.py
-├── Dockerfile             # Container configuration
-├── environment.yml        # Conda dependencies
-├── .pre-commit-config.yaml # Code quality hooks
-├── README.md             # Documentation
-└── .gitignore           # Version control rules
-```
-
-## Template Patterns
-
-### Container-First Architecture
-
-* All execution in containers
-* Conda environment management
-* No local dependencies
-* Consistent environments
-
-### Application Structure
-
-* FastAPI for APIs
-* CRUD operations
-* Type annotations
-* Automated testing
 
 ### Development Patterns
 
-* Code quality automation
-* Container-based testing
-* Documentation standards
-* Dependency isolation
+```text
+template-system/
+├── templates/          # Template definitions
+│   ├── base/          # Base template pattern
+│   ├── node/          # Node.js specific pattern
+│   └── python/        # Python specific pattern
+└── tests/             # Test framework
+    ├── framework/     # Testing infrastructure
+    ├── unit/         # Unit test patterns
+    ├── integration/  # Integration patterns
+    └── e2e/          # End-to-end patterns
+```
 
-### File Structure
+## Testing Patterns
 
-* Source in src/
-* Tests in tests/
-* Configuration at root
-* Clear documentation
+### Test Framework Architecture
 
-## Template Management
+* Isolated test environments
+* Automated cleanup protocols
+* Standardized assertions
+* Reproducible test cases
 
-### Update Patterns
+### Test Development Flow
 
-* Container rebuilds
-* Dependency updates
-* Version control
-* Documentation sync
+* Test-driven development
+* Continuous validation
+* Error case coverage
+* Cross-platform testing
 
-### State Management
+### Test Categories
 
-* Container state
+* Unit testing patterns
+* Integration verification
+* End-to-end validation
+* Error handling tests
+
+## Framework Components
+
+### Core Testing Utilities
+
+* Assertion functions
+* Environment setup/teardown
+* Resource management
+* Result reporting
+
+### Test Environment Management
+
+* Temporary directories
+* Environment variables
+* Docker containers
+* Git repositories
+
+### Test Execution Flow
+
+* Setup phase
+* Test execution
+* Validation phase
+* Cleanup procedures
+
+## Testing Strategy
+
+### Development Testing
+
+* Local development tests
+* Quick feedback cycle
+* Focused test cases
+* Debug capabilities
+
+### Integration Testing
+
+* Cross-component tests
+* Template compatibility
+* Resource coordination
+* System integration
+
+### Production Testing
+
+* Full workflow validation
+* Performance testing
+* Security verification
+* Deployment checks
+
+## Testing Protocols
+
+### Test Case Structure
+
+* Clear descriptions
+* Isolated environments
+* Comprehensive cleanup
+* Error validation
+
+### Resource Management
+
+* Temporary file handling
 * Environment isolation
-* Configuration tracking
-* Version control
+* Container lifecycle
+* Git repository management
 
-## Container Integration
+### Error Handling
 
-### Structure
-
-* Base Conda image
-* Environment setup
-* Application layer
-* Entry points
-
-### Development Flow
-
-* Local containers
-* Automated testing
-* Code quality checks
-* Documentation
+* Expected failures
+* Edge case testing
+* Resource cleanup
+* Error reporting
 
 ## Quality Assurance
 
 ### Code Quality
 
-* Black formatting
-* Isort imports
-* Flake8 linting
-* Pre-commit hooks
+* Test coverage
+* Error handling
+* Cross-platform support
+* Documentation standards
 
-### Testing Strategy
+### Test Quality
 
-* Pytest framework
-* API testing
-* Container validation
-* Documentation verification
+* Reproducibility
+* Isolation
+* Clear purpose
+* Comprehensive validation
+
+### Documentation Quality
+
+* Clear instructions
+* Usage examples
+* Error solutions
+* Best practices
+
+## Development Flow
+
+### TDD Workflow
+
+1. Write failing test
+2. Implement feature
+3. Pass test
+4. Refactor
+5. Repeat
+
+### Integration Workflow
+
+1. Component tests
+2. Integration tests
+3. System tests
+4. Performance tests
+
+### Deployment Workflow
+
+1. Unit validation
+2. Integration checks
+3. System testing
+4. Production verification
+
+## System Integration
+
+### Template Integration
+
+* Base template testing
+* Language-specific tests
+* Feature validation
+* Cross-template compatibility
+
+### Docker Integration
+
+* Container testing
+* Build validation
+* Runtime verification
+* Resource cleanup
+
+### Development Tools
+
+* Testing utilities
+* Debug helpers
+* Validation tools
+* Documentation generators
