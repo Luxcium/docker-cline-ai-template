@@ -1,0 +1,159 @@
+{
+  "gallery_name": "demo",
+  "image_count": 9,
+  "items": [
+    {
+      "filename": "drugcore_plasma_vacuum_tubes_glowing_sensation_henar_kr_5b0c8222-9930-4e01-bc88-267905ea5621.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/drugcore_plasma_vacuum_tubes_glowing_sensation_henar_kr_5b0c8222-9930-4e01-bc88-267905ea5621.png",
+      "size_bytes": 1490781,
+      "created_time": "2025-03-13T21:06:03.324178",
+      "modified_time": "2025-03-13T21:04:58.763966",
+      "extension": "png",
+      "uuid": "5b0c8222-9930-4e01-bc88-267905ea5621",
+      "description": "drugcore_plasma_vacuum_tubes_glowing_sensation_henar_kr",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t_1e5c06ef-9bc6-4059-b7f8-60692b5d8151.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t_1e5c06ef-9bc6-4059-b7f8-60692b5d8151.png",
+      "size_bytes": 983399,
+      "created_time": "2025-03-13T21:06:03.336178",
+      "modified_time": "2025-03-13T21:04:58.739966",
+      "extension": "png",
+      "uuid": "1e5c06ef-9bc6-4059-b7f8-60692b5d8151",
+      "description": "naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "naturecore_chlorine_plasma_vacuum_tubes_henar_kr_x_disc_5bb3a9fb-4ef1-4b10-94dc-8093775632ac.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/naturecore_chlorine_plasma_vacuum_tubes_henar_kr_x_disc_5bb3a9fb-4ef1-4b10-94dc-8093775632ac.png",
+      "size_bytes": 1603298,
+      "created_time": "2025-03-13T21:06:03.329178",
+      "modified_time": "2025-03-13T21:04:58.914964",
+      "extension": "png",
+      "uuid": "5bb3a9fb-4ef1-4b10-94dc-8093775632ac",
+      "description": "naturecore_chlorine_plasma_vacuum_tubes_henar_kr_x_disc",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t_655c6482-de3f-4d76-b7e0-9947e9552744.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t_655c6482-de3f-4d76-b7e0-9947e9552744.png",
+      "size_bytes": 1314392,
+      "created_time": "2025-03-13T21:06:03.339178",
+      "modified_time": "2025-03-13T21:04:58.844965",
+      "extension": "png",
+      "uuid": "655c6482-de3f-4d76-b7e0-9947e9552744",
+      "description": "naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "disc_tubes_for_gas_evacuator_with_two_tubes_in_the_back_d826348d-0d06-4f67-9ec6-cf485db81b8c.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/disc_tubes_for_gas_evacuator_with_two_tubes_in_the_back_d826348d-0d06-4f67-9ec6-cf485db81b8c.png",
+      "size_bytes": 1410980,
+      "created_time": "2025-03-13T21:06:03.321178",
+      "modified_time": "2025-03-13T21:04:58.788965",
+      "extension": "png",
+      "uuid": "d826348d-0d06-4f67-9ec6-cf485db81b8c",
+      "description": "disc_tubes_for_gas_evacuator_with_two_tubes_in_the_back",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "the_ceiling_is_lit_up_blue_in_the_style_of_urban_expres_2b8224e3-c057-442a-8c4d-0cc9ebfc77dc.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/the_ceiling_is_lit_up_blue_in_the_style_of_urban_expres_2b8224e3-c057-442a-8c4d-0cc9ebfc77dc.png",
+      "size_bytes": 1476950,
+      "created_time": "2025-03-13T21:06:03.344178",
+      "modified_time": "2025-03-13T21:04:58.819965",
+      "extension": "png",
+      "uuid": "2b8224e3-c057-442a-8c4d-0cc9ebfc77dc",
+      "description": "the_ceiling_is_lit_up_blue_in_the_style_of_urban_expres",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t_80117daf-96c4-4937-a71a-52dc3a15916f.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t_80117daf-96c4-4937-a71a-52dc3a15916f.png",
+      "size_bytes": 1271892,
+      "created_time": "2025-03-13T21:06:03.342178",
+      "modified_time": "2025-03-13T21:04:58.713966",
+      "extension": "png",
+      "uuid": "80117daf-96c4-4937-a71a-52dc3a15916f",
+      "description": "naturecore_sodium_plasma_vacuum_tubes_henar_kr_x_disc_t",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "naturecore_chlorine_plasma_vacuum_tubes_henar_kr_x_disc_14e93720-551b-48f0-963d-3e801774ba9c.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/naturecore_chlorine_plasma_vacuum_tubes_henar_kr_x_disc_14e93720-551b-48f0-963d-3e801774ba9c.png",
+      "size_bytes": 1373523,
+      "created_time": "2025-03-13T21:06:03.327178",
+      "modified_time": "2025-03-13T21:04:58.881964",
+      "extension": "png",
+      "uuid": "14e93720-551b-48f0-963d-3e801774ba9c",
+      "description": "naturecore_chlorine_plasma_vacuum_tubes_henar_kr_x_disc",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    },
+    {
+      "filename": "naturecore_radium_plasma_vacuum_tubes_henar_kr_x_disc_t_57c5ee94-1b43-4927-a15e-60605a3df4be.png",
+      "path": "/projects/templates/docker-cline-ai-template/demo/naturecore_radium_plasma_vacuum_tubes_henar_kr_x_disc_t_57c5ee94-1b43-4927-a15e-60605a3df4be.png",
+      "size_bytes": 1551273,
+      "created_time": "2025-03-13T21:06:03.332178",
+      "modified_time": "2025-03-13T21:04:58.861964",
+      "extension": "png",
+      "uuid": "57c5ee94-1b43-4927-a15e-60605a3df4be",
+      "description": "naturecore_radium_plasma_vacuum_tubes_henar_kr_x_disc_t",
+      "format": "PNG",
+      "color_mode": "RGB",
+      "dimensions": {
+        "width": 1456,
+        "height": 816
+      },
+      "exif_data": {}
+    }
+  ]
+}
